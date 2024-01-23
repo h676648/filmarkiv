@@ -2,52 +2,100 @@ package impl;
 
 import adt.FilmArkivADT;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Filmarkiv implements FilmArkivADT {
     Film[] filmer;
-    void FilmArkivADT(int antall) {
-        Film[] filmer = new Film[antall];
+    public Filmarkiv(int antall) {
+        filmer = new Film[antall];
     }
 
     @Override
     public Film finnFilm(int nr) {
-        for (int i=0; i<filmer.length; i++) {
-           if (filmer[i].getFilmnr()==nr) {
-               return filmer[i];
-           }
+        for (Film film : filmer) {
+            if (film.getFilmnr() == nr) {
+                return film;
+            }
         }
         return null;
     }
 
-    //TODO Kommet hit
     @Override
     public void leggTilFilm(Film nyFilm) {
-    Film ny = new Film();
-
+        if (filmer[filmer.length-1] != null) {
+            utvid();
+        }
+        for (int i=0; i < filmer.length; i++) {
+            if (filmer[i] == null) {
+                filmer[i] = nyFilm;
+                break;
+            }
+        }
+    }
+    private void utvid() {
+        Film[] nyFilmer = new Film[filmer.length *2 ];
+        System.arraycopy(filmer, 0,nyFilmer,0,filmer.length);
+        filmer = nyFilmer;
     }
 
     @Override
     public boolean slettFilm(int filmnr) {
+        for (int i = 0; i < filmer.length; i++) {
+            if (filmer[i] != null && filmer[i].getFilmnr() == filmnr) {
+                filmer[i] = null;
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Film[] soekTittel(String delstreng) {
-        return new Film[0];
+        List<Film> resultFilms = new ArrayList<>();
+
+        for (Film film : filmer) {
+            if (film != null && film.getTitle().contains(delstreng)) {
+                resultFilms.add(film);
+            }
+        }
+        return resultFilms.toArray(new Film[0]);
     }
 
     @Override
     public Film[] soekProdusent(String delstreng) {
-        return new Film[0];
+        List<Film> resultProd = new ArrayList<>();
+
+        for (Film film : filmer) {
+            if (film != null && film.getProd().contains(delstreng)) {
+                resultProd.add(film);
+            }
+        }
+        return resultProd.toArray(new Film[0]);
     }
 
     @Override
     public int antall(Film.Sjanger sjanger) {
-        return 0;
+        int antallSjanger = 0;
+
+        for (Film film : filmer) {
+            if (film != null && film.getSjanger() == sjanger) {
+                antallSjanger++;
+            }
+        }
+        return antallSjanger;
     }
 
     @Override
     public int antall() {
-        return 0;
+        int count = 0;
+
+        for (Film film : filmer) {
+            if (film != null) {
+                count++;
+            }
+        }
+        return count;
     }
 }
 

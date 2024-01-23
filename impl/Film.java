@@ -1,12 +1,6 @@
 package impl;
 import java.util.Objects;
 public class Film {
-    private int filmnr;
-    private String prod;
-    private String title;
-    private int year;
-    private String filmselskap;
-
     public enum Sjanger {
         ACTION, DRAMA, HISTORY, SCIFI;
         public static Sjanger finnSjanger(String navn) {
@@ -18,11 +12,18 @@ public class Film {
             return null;
         }
     }
+    private int filmnr;
+    private String prod;
+    private String title;
+    private int year;
+    private String filmselskap;
+    private Sjanger sjanger;
+
 
 
     // TODO
     // Sjanger av type enum.
-    Film(int filmnr, String prod, String title, int year, String filmselskap) {
+    public Film(int filmnr, String prod, String title, int year, String filmselskap, Sjanger sjanger) {
         this.filmnr = filmnr;
         this.prod = prod;
         this.title = title;
@@ -64,6 +65,12 @@ public class Film {
     }
     void setFilmselskap(String filmselskap) {
         this.filmselskap = filmselskap;
+    }
+    Sjanger getSjanger() {
+        return sjanger;
+    }
+    void setSjanger(Sjanger sjanger) {
+        this.sjanger = sjanger;
     }
 
     @Override
