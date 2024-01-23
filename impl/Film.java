@@ -1,5 +1,5 @@
 package impl;
-
+import java.util.Objects;
 public class Film {
     private int filmnr;
     private String prod;
@@ -51,6 +51,22 @@ public class Film {
     }
     void setFilmselskap(String filmselskap) {
         this.filmselskap = filmselskap;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Film film = (Film) obj;
+        return filmnr == film.filmnr;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(filmnr);
     }
 
 
