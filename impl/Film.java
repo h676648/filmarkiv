@@ -7,6 +7,19 @@ public class Film {
     private int year;
     private String filmselskap;
 
+    public enum Sjanger {
+        ACTION, DRAMA, HISTORY, SCIFI;
+        public static Sjanger finnSjanger(String navn) {
+            for (Sjanger s : Sjanger.values()) {
+                if (s.toString().equals(navn.toUpperCase())) {
+                    return s;
+                }
+            }
+            return null;
+        }
+    }
+
+
     // TODO
     // Sjanger av type enum.
     Film(int filmnr, String prod, String title, int year, String filmselskap) {
