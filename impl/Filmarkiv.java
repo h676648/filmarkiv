@@ -109,9 +109,5 @@ public class Filmarkiv implements FilmArkivADT {
         return nytab;
     }
 
-    @Override
-    public String toString(Film[] film) {
-        return "" + film[0].getTitle();
-    }
 }
 

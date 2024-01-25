@@ -43,5 +43,4 @@ public interface FilmArkivADT {
      */
     int antall();
 
-    String toString(Film[] film);
 }
