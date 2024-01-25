@@ -42,4 +42,6 @@ public interface FilmArkivADT {
      * @return antall filmer i arkivet
      */
     int antall();
+
+    String toString(Film[] film);
 }

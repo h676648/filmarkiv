@@ -52,14 +52,14 @@ public class Filmarkiv implements FilmArkivADT {
 
     @Override
     public Film[] soekTittel(String delstreng) {
-        List<Film> resultFilms = new ArrayList<>();
+        List<Film> resultFilms = new ArrayList<Film>();
 
         for (Film film : filmer) {
             if (film != null && film.getTitle().contains(delstreng)) {
                 resultFilms.add(film);
             }
         }
-        return resultFilms.toArray(new Film[0]);
+        return  resultFilms.toArray(new Film[0]);
     }
 
     @Override
@@ -96,6 +96,22 @@ public class Filmarkiv implements FilmArkivADT {
             }
         }
         return count;
+    }
+
+    private Film[] trimTab(Film[] tab, int n) {
+        // n er antall elementer
+        Film[] nytab = new Film[n];
+        int i = 0;
+        while (i < n) {
+            nytab[i] = tab[i];
+            i++;
+        }
+        return nytab;
+    }
+
+    @Override
+    public String toString(Film[] film) {
+        return "" + film[0].getTitle();
     }
 }
 

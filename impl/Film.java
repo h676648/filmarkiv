@@ -30,43 +30,43 @@ public class Film {
         this.year = year;
         this.filmselskap = filmselskap;
     }
-    Film() {
+    public Film() {
         Film film = new Film();
     }
 
-    int getFilmnr() {
+    public int getFilmnr() {
         return filmnr;
     }
 
     void setFilmnr(int filmnr) {
         this.filmnr = filmnr;
     }
-    String getProd() {
+    public String getProd() {
         return prod;
     }
     void setProd(String prod) {
         this.prod = prod;
     }
-    String getTitle() {
-        return prod;
+    public String getTitle() {
+        return title;
     }
     void setTitle(String title) {
         this.title = title;
     }
 
-    int getYear() {
+    public int getYear() {
         return year;
     }
     void setYear(int year) {
         this.year = year;
     }
-    String getFilmselskap() {
+    public String getFilmselskap() {
         return filmselskap;
     }
     void setFilmselskap(String filmselskap) {
         this.filmselskap = filmselskap;
     }
-    Sjanger getSjanger() {
+    public Sjanger getSjanger() {
         return sjanger;
     }
     void setSjanger(Sjanger sjanger) {
@@ -89,5 +89,10 @@ public class Film {
         return Objects.hash(filmnr);
     }
 
-
+    public String toString(Film[] film) {
+        return "" + film[0].getTitle();
+    }
+    public String toString(Film film) {
+        return "" + film.getTitle();
+    }
 }
