@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class FilmarkivMain {
     public static void main(String[] args) {
-        FilmArkivADT filma = new Filmarkiv(4);
+        FilmArkivADT filma = new Filmarkiv(6);
         Meny meny = new Meny(filma);
         meny.start();
         Film[] result = filma.soekTittel("Mat");
@@ -19,6 +19,7 @@ public class FilmarkivMain {
         } else {
             System.out.println("No matching film found.");
         }
+        System.out.println("Antall Action-filmer: " + filma.antall(Film.Sjanger.ACTION));
 
     }
 }

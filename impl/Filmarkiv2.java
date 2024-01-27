@@ -65,9 +65,8 @@ public class Filmarkiv2 implements FilmArkivADT {
 
     public int antall(Film.Sjanger sjanger) {
         int antallSjanger = 0;
-
         for (Film film : filmer) {
-            if (film != null && film.getSjanger() == sjanger) {
+            if (film.getSjanger() == sjanger) {
                 antallSjanger++;
             }
         }

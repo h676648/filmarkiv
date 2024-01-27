@@ -30,6 +30,7 @@ public class Film {
         this.title = title;
         this.year = year;
         this.filmselskap = filmselskap;
+        this.sjanger = sjanger;
     }
     public Film() {
         Film film = new Film();
