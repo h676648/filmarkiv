@@ -14,8 +14,12 @@ public class Filmarkiv implements FilmArkivADT {
     @Override
     public Film finnFilm(int nr) {
         for (Film film : filmer) {
-            if (film.getFilmnr() == nr) {
-                return film;
+            try {
+                if (film.getFilmnr() == nr) {
+                    return film;
+                }
+            } catch (NullPointerException e) {
+                return null;
             }
         }
         return null;
