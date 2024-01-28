@@ -40,6 +40,7 @@ public class LinearNode<T> implements Iterable<T> {
         newNode.data = nyFilm;
         newNode.neste = head;
         head = newNode;
+        size++;
     }
 
     public void remove(Film film) {
@@ -65,6 +66,7 @@ public class LinearNode<T> implements Iterable<T> {
             return;
         }
         try {
+            assert previous != null;
             previous.setNext(current.getNeste());
         } catch (NullPointerException e) {
             return;
@@ -137,7 +139,7 @@ public class LinearNode<T> implements Iterable<T> {
     }
 
     public Iterator<T> iterator() { //For å iterate enhanced for loops til bruk i Filmarkiv2
-        return new Iterator<T>() {
+        return new Iterator<>() {
             private LinearNode<T> current = head;
 
             @Override

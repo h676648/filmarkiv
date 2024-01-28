@@ -11,7 +11,7 @@ public interface FilmArkivADT {
     Film finnFilm(int nr);
     /**
      * Legger til en ny film.
-     * @param nyFilm
+     * @param nyFilm //Nyfilm
      */
     void leggTilFilm(Film nyFilm);
     /**
@@ -23,18 +23,18 @@ public interface FilmArkivADT {
     /**
      * Søker og henter Filmer med en gitt delstreng i tittelen.
      * @param delstreng som må være i tittel
-     * @return tabell med filmer som har delstreng i tittel
+     * @return true/false
      */
     Film[] soekTittel(String delstreng);
     /**
      * Søker og henter filmer med en gitt delstreng i filmprodusent
-     * @param delstreng
-     * @return
+     * @param delstreng //Delstreng
+     * @return //returnerer en array med filmer
      */
     Film[] soekProdusent(String delstreng);
     /**
      * Finner antall filmer med gitt sjanger
-     * @param sjanger
+     * @param sjanger // sjanger
      * @return antall filmer av gitt sjanger.
      */
     int antall(Film.Sjanger sjanger);

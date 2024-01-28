@@ -89,7 +89,6 @@ public class Filmarkiv2 implements FilmArkivADT {
     @Override
     public int antall() {
         int antall = 0;
-
         for (Film film : filmer) {
             antall++;
         }

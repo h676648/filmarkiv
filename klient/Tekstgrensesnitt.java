@@ -5,10 +5,8 @@ import java.util.Scanner;
 
 import adt.FilmArkivADT;
 import impl.Film;
-import impl.Filmarkiv;
-import klient.Meny;
 public class Tekstgrensesnitt {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
     public Tekstgrensesnitt() {
         this.scanner = new Scanner(System.in);
     }

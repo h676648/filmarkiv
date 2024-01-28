@@ -1,10 +1,6 @@
 package klient;
 import impl.Film;
-import impl.Filmarkiv;
-import impl.Filmarkiv2;
 import adt.FilmArkivADT;
-
-import java.util.Scanner;
 
 public class Meny {
     public FilmArkivADT filmarkiv;
@@ -74,38 +70,19 @@ public class Meny {
         int year = tekstgr.lesHeltall("Skriv inn aar: ");
         String selskap = tekstgr.lesString("Skriv inn filmselskap: ");
         Film.Sjanger sjanger = tekstgr.lesSjanger("Skriv inn sjanger: (Comedy, Scifi, Drama, History, Thriller, Action) ");
-
-        try {
-            if (filmNr == filmarkiv.finnFilm(filmNr).getFilmnr()) {
-                tekstgr.visMelding("Allerede funnet film med samme filmnr. Vil du bytte film? (Svar med 1/2)");
-                int input = tekstgr.lesHeltall("1: Ja\n2: Nei");
-                if (input == 1) {
-                    filmarkiv.slettFilm(filmNr);
-                    Film film = new Film(filmNr,tittel, prod, year, selskap, sjanger);
-                    filmarkiv.leggTilFilm(film);
-                    tekstgr.visMelding("Film lagt til!");
-                }
-                if (input == 2) {
-                    tekstgr.visMelding("Prov igjen.");
-                }
-                else {
-                    tekstgr.visMelding("Feil inntast. Prov igjen.");
-                }
-            }
-        }
-        catch (NullPointerException e) {
-                Film film = new Film(filmNr,tittel, prod, year, selskap, sjanger);
-                filmarkiv.leggTilFilm(film);
-                tekstgr.visMelding("Film lagt til!");
-        }
+        Film film = new Film(filmNr,tittel, prod, year, selskap, sjanger);
+        filmarkiv.leggTilFilm(film);
+        tekstgr.visMelding("Film lagt til!");
     }
 
     private void finnFilm() {
         tekstgr.visMelding("Hvordan vil du finne film?" );
         int input = tekstgr.lesHeltall
-                (   "1: Soek etter tittel\n" +
-                            "2: Soek etter produsent\n" +
-                            "3: Soek etter filmnr\n"
+                ("""
+                        1: Soek etter tittel
+                        2: Soek etter produsent
+                        3: Soek etter filmnr
+                        """
                 );
 
         switch (input) {
@@ -146,29 +123,34 @@ public class Meny {
     private void slettFilm() {
         tekstgr.visMelding("Hvordan vil du finne film? ");
         int input = tekstgr.lesHeltall
-                (   "1: Soek etter tittel\n" +
-                            "2: Soek etter produsent\n" +
-                            "3: Soek etter filmnr\n"
+                ("""
+                        1: Soek etter tittel
+                        2: Soek etter produsent
+                        3: Soek etter filmnr
+                        """
                 );
 
         switch (input) {
             case 1:
                 Film[] soekTittel = filmarkiv.soekTittel(tekstgr.lesString("Skriv tittel: "));
-                for (int i = 0; i < soekTittel.length; i++) {
-                    int filmnr = soekTittel[i].getFilmnr();
+                for (Film film : soekTittel) {
+                    int filmnr = film.getFilmnr();
                     filmarkiv.slettFilm(filmnr);
+                    tekstgr.visMelding("Film slettet! ");
                 }
                 break;
             case 2:
                 Film[] soekProd = filmarkiv.soekProdusent(tekstgr.lesString("Skriv produsent: "));
-                for (int i = 0; i < soekProd.length; i++) {
-                    int filmnr = soekProd[i].getFilmnr();
+                for (Film film : soekProd) {
+                    int filmnr = film.getFilmnr();
                     filmarkiv.slettFilm(filmnr);
+                    tekstgr.visMelding("Film slettet! ");
                 }
                 break;
             case 3:
                 int filmnr = tekstgr.lesHeltall("Skriv filmnr: (Heltall over 0) ");
                 filmarkiv.slettFilm(filmnr);
+                tekstgr.visMelding("Film slettet! ");
                 break;
             default:
                 tekstgr.visMelding("Feil ved inntast. Prov igjen. ");
@@ -180,7 +162,7 @@ public class Meny {
         for (Film film : filmer) {
             try {
                 if (film != null) {
-                    System.out.println(film.toString());
+                    System.out.println(film);
                 }
             } catch (NullPointerException e) {
                 return;
