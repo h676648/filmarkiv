@@ -1,17 +1,19 @@
 package impl;
-
 import adt.FilmArkivADT;
+import adt.LinearNode;
 import java.util.LinkedList;
 public class Filmarkiv2 implements FilmArkivADT {
-    private LinkedList<Film> filmer;
+    private final LinearNode<Film> filmer;
+
 
     public Filmarkiv2() {
-        filmer = new LinkedList<>();
+        //filmer = new LinkedList<>();
+        filmer = new LinearNode<>();
     }
 
     @Override
     public Film finnFilm(int nr) {
-       for (Film film : filmer) {
+       for (Film film: filmer) {
            if (film.getFilmnr() == nr) {
                return film;
            }
@@ -24,6 +26,17 @@ public class Filmarkiv2 implements FilmArkivADT {
         filmer.add(nyFilm);
     }
 
+
+    public void leggTilFilm(Film film, Film film1) {
+        filmer.add(film);
+        filmer.add(film1);
+    }
+
+    public void leggTilFilm(Film film0, Film film1, Film film2) {
+        filmer.add(film0);
+        filmer.add(film1);
+        filmer.add(film2);
+    }
     @Override
     public boolean slettFilm(int filmNr) {
         Film filmToRemove = null;
@@ -82,4 +95,5 @@ public class Filmarkiv2 implements FilmArkivADT {
         }
         return antall;
     }
+
 }

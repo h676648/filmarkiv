@@ -1,7 +1,5 @@
 package klient;
-
 import impl.Film;
-import impl.Filmarkiv;
 import adt.FilmArkivADT;
 public class Meny {
     private Tekstgrensesnitt tekstgr;
