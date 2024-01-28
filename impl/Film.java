@@ -1,17 +1,8 @@
 package impl;
-import java.io.IOException;
 import java.util.Objects;
 public class Film {
     public enum Sjanger {
-        ACTION, DRAMA, HISTORY, SCIFI, THRILLER, COMEDY;
-        public static Sjanger finnSjanger(String navn) {
-            for (Sjanger s : Sjanger.values()) {
-                if (s.toString().equals(navn.toUpperCase())) {
-                    return s;
-                }
-            }
-            return null;
-        }
+        ACTION, DRAMA, HISTORY, SCIFI, THRILLER, COMEDY
     }
     private int filmnr;
     private String prod;
@@ -32,46 +23,43 @@ public class Film {
         this.filmselskap = filmselskap;
         this.sjanger = sjanger;
     }
-    public Film() {
-        Film film = new Film();
-    }
 
     public int getFilmnr() {
             return filmnr;
     }
 
-    void setFilmnr(int filmnr) {
+    public void setFilmnr(int filmnr) {
         this.filmnr = filmnr;
     }
     public String getProd() {
         return prod;
     }
-    void setProd(String prod) {
+    public void setProd(String prod) {
         this.prod = prod;
     }
     public String getTitle() {
         return title;
     }
-    void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
     public int getYear() {
         return year;
     }
-    void setYear(int year) {
+    public void setYear(int year) {
         this.year = year;
     }
     public String getFilmselskap() {
         return filmselskap;
     }
-    void setFilmselskap(String filmselskap) {
+    public void setFilmselskap(String filmselskap) {
         this.filmselskap = filmselskap;
     }
     public Sjanger getSjanger() {
         return sjanger;
     }
-    void setSjanger(Sjanger sjanger) {
+    public void setSjanger(Sjanger sjanger) {
         this.sjanger = sjanger;
     }
 
@@ -91,10 +79,23 @@ public class Film {
         return Objects.hash(filmnr);
     }
 
-    public String toString(Film[] film) {
-        return "" + film[0].getTitle();
+    public String toString() {
+        String result = "Filmnr: "+ getFilmnr();
+        result += "\nTitle: " + getTitle();
+        result += "\nProducer: " + getProd();
+        result += "\nYear: " + getYear();
+        result += "\nProduction: " + getFilmselskap();
+        result += "\nGenre: " + getSjanger()+"\n";
+        return result;
     }
+
     public String toString(Film film) {
-        return "" + film.getTitle();
+        String result = "Filmnr: "+ film.getFilmnr();
+        result += "\nTitle: " + film.getTitle();
+        result += "\nProducer: " + film.getProd();
+        result += "\nYear: " + film.getYear();
+        result += "\nProduction: " + film.getFilmselskap();
+        result += "\nGenre: " + film.getSjanger()+"\n";
+        return result;
     }
 }
